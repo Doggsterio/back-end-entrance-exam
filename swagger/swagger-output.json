@@ -1,0 +1,509 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "REST API",
+    "version": "1.0.0",
+    "description": "Описание REST API сервиса по управлению кэшем."
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/cache/clear": {
+      "patch": {
+        "tags": [
+          "Cache"
+        ],
+        "summary": "Очистка кэша",
+        "description": "Очищает имеющийся кэш.",
+        "responses": {
+          "200": {
+            "description": "Сообщение об успешном очищении кэша",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Кэш очищен."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/cache/change-size": {
+      "patch": {
+        "tags": [
+          "Cache"
+        ],
+        "summary": "Изменение размера кэша",
+        "description": "Изменяет размер кэша.",
+        "parameters": [
+          {
+            "name": "newSize",
+            "in": "query",
+            "description": "Размер кэша (в количестве элементов)",
+            "required": true,
+            "type": "integer",
+            "schema": {
+              "type": "string",
+              "example": "3"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Сообщение об успешном изменении размера кэша",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Размер кэша изменён."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/cache/update": {
+      "patch": {
+        "tags": [
+          "Cache"
+        ],
+        "summary": "Обновление кэша",
+        "description": "Обновляет кэш.",
+        "responses": {
+          "200": {
+            "description": "Сообщение об успешном обновлении кэша",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Кэш обновлён."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/anime/{id}": {
+      "get": {
+        "tags": [
+          "Anime"
+        ],
+        "summary": "Запрос информации об аниме",
+        "description": "Возвращает информацию об аниме с указанным ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID аниме",
+            "schema": {
+              "type": "string",
+              "example": "5"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Объект data с информацией об аниме",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "mal_id": {
+                      "type": "number",
+                      "example": 5
+                    },
+                    "url": {
+                      "type": "string",
+                      "example": "https://myanimelist.net/anime/5/Cowboy_Bebop__Tengoku_no_Tobira"
+                    },
+                    "images": {
+                      "type": "object",
+                      "properties": {
+                        "jpg": {
+                          "type": "object",
+                          "properties": {
+                            "image_url": {
+                              "type": "string",
+                              "example": "https://cdn.myanimelist.net/images/anime/1439/93480.jpg"
+                            },
+                            "small_image_url": {
+                              "type": "string",
+                              "example": "https://cdn.myanimelist.net/images/anime/1439/93480t.jpg"
+                            },
+                            "large_image_url": {
+                              "type": "string",
+                              "example": "https://cdn.myanimelist.net/images/anime/1439/93480l.jpg"
+                            }
+                          }
+                        },
+                        "webp": {
+                          "type": "object",
+                          "properties": {
+                            "image_url": {
+                              "type": "string",
+                              "example": "https://cdn.myanimelist.net/images/anime/1439/93480.webp"
+                            },
+                            "small_image_url": {
+                              "type": "string",
+                              "example": "https://cdn.myanimelist.net/images/anime/1439/93480t.webp"
+                            },
+                            "large_image_url": {
+                              "type": "string",
+                              "example": "https://cdn.myanimelist.net/images/anime/1439/93480l.webp"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "trailer": {
+                      "type": "object",
+                      "properties": {
+                        "youtube_id": {},
+                        "url": {},
+                        "embed_url": {},
+                        "images": {
+                          "type": "object",
+                          "properties": {
+                            "image_url": {},
+                            "small_image_url": {},
+                            "medium_image_url": {},
+                            "large_image_url": {},
+                            "maximum_image_url": {}
+                          }
+                        }
+                      }
+                    },
+                    "approved": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "titles": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "French"
+                          },
+                          "title": {
+                            "type": "string",
+                            "example": "Cowboy Bebop: Le Film"
+                          }
+                        }
+                      }
+                    },
+                    "title": {
+                      "type": "string",
+                      "example": "Cowboy Bebop: Tengoku no Tobira"
+                    },
+                    "title_english": {
+                      "type": "string",
+                      "example": "Cowboy Bebop: The Movie"
+                    },
+                    "title_japanese": {
+                      "type": "string",
+                      "example": "カウボーイビバップ 天国の扉"
+                    },
+                    "title_synonyms": {
+                      "type": "array",
+                      "example": [
+                        "Cowboy Bebop: Knockin' on Heaven's Door"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "Movie"
+                    },
+                    "source": {
+                      "type": "string",
+                      "example": "Original"
+                    },
+                    "episodes": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "Finished Airing"
+                    },
+                    "airing": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "aired": {
+                      "type": "object",
+                      "properties": {
+                        "from": {
+                          "type": "string",
+                          "example": "2001-09-01T00:00:00+00:00"
+                        },
+                        "to": {},
+                        "prop": {
+                          "type": "object",
+                          "properties": {
+                            "from": {
+                              "type": "object",
+                              "properties": {
+                                "day": {
+                                  "type": "number",
+                                  "example": 1
+                                },
+                                "month": {
+                                  "type": "number",
+                                  "example": 9
+                                },
+                                "year": {
+                                  "type": "number",
+                                  "example": 2001
+                                }
+                              }
+                            },
+                            "to": {
+                              "type": "object",
+                              "properties": {
+                                "day": {},
+                                "month": {},
+                                "year": {}
+                              }
+                            }
+                          }
+                        },
+                        "string": {
+                          "type": "string",
+                          "example": "Sep 1, 2001"
+                        }
+                      }
+                    },
+                    "duration": {
+                      "type": "string",
+                      "example": "1 hr 55 min"
+                    },
+                    "rating": {
+                      "type": "string",
+                      "example": "R - 17+ (violence & profanity)"
+                    },
+                    "score": {
+                      "type": "number",
+                      "example": 8.38
+                    },
+                    "scored_by": {
+                      "type": "number",
+                      "example": 217974
+                    },
+                    "rank": {
+                      "type": "number",
+                      "example": 201
+                    },
+                    "popularity": {
+                      "type": "number",
+                      "example": 622
+                    },
+                    "members": {
+                      "type": "number",
+                      "example": 383055
+                    },
+                    "favorites": {
+                      "type": "number",
+                      "example": 1616
+                    },
+                    "synopsis": {
+                      "type": "string",
+                      "example": "Another day, another bounty—such is the life of the often unlucky crew of the Bebop. However, this routine is interrupted when Faye, who is chasing a fairly worthless target on Mars, witnesses an oil tanker suddenly explode, causing mass hysteria. As casualties mount due to a strange disease spreading through the smoke from the blast, a whopping three hundred million woolong price is placed on the head of the supposed perpetrator.\n\nWith lives at stake and a solution to their money problems in sight, the Bebop crew springs into action. Spike, Jet, Faye, and Edward, followed closely by Ein, split up to pursue different leads across Alba City. Through their individual investigations, they discover a cover-up scheme involving a pharmaceutical company, revealing a plot that reaches much further than the ragtag team of bounty hunters could have realized.\n\n[Written by MAL Rewrite]"
+                    },
+                    "background": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "season": {},
+                    "year": {},
+                    "broadcast": {
+                      "type": "object",
+                      "properties": {
+                        "day": {},
+                        "time": {},
+                        "timezone": {},
+                        "string": {}
+                      }
+                    },
+                    "producers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "mal_id": {
+                            "type": "number",
+                            "example": 23
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "anime"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Bandai Visual"
+                          },
+                          "url": {
+                            "type": "string",
+                            "example": "https://myanimelist.net/anime/producer/23/Bandai_Visual"
+                          }
+                        }
+                      }
+                    },
+                    "licensors": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "mal_id": {
+                            "type": "number",
+                            "example": 102
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "anime"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Funimation"
+                          },
+                          "url": {
+                            "type": "string",
+                            "example": "https://myanimelist.net/anime/producer/102/Funimation"
+                          }
+                        }
+                      }
+                    },
+                    "studios": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "mal_id": {
+                            "type": "number",
+                            "example": 4
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "anime"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Bones"
+                          },
+                          "url": {
+                            "type": "string",
+                            "example": "https://myanimelist.net/anime/producer/4/Bones"
+                          }
+                        }
+                      }
+                    },
+                    "genres": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "mal_id": {
+                            "type": "number",
+                            "example": 24
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "anime"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Sci-Fi"
+                          },
+                          "url": {
+                            "type": "string",
+                            "example": "https://myanimelist.net/anime/genre/24/Sci-Fi"
+                          }
+                        }
+                      }
+                    },
+                    "explicit_genres": {
+                      "type": "array",
+                      "example": [],
+                      "items": {}
+                    },
+                    "themes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "mal_id": {
+                            "type": "number",
+                            "example": 29
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "anime"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Space"
+                          },
+                          "url": {
+                            "type": "string",
+                            "example": "https://myanimelist.net/anime/genre/29/Space"
+                          }
+                        }
+                      }
+                    },
+                    "demographics": {
+                      "type": "array",
+                      "example": [],
+                      "items": {}
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
