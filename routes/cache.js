@@ -3,7 +3,7 @@ const router = express.Router();
 const cacheController = require('../controllers/cache');
 
 
-router.patch('/clear', (req, res) => {
+router.delete('/clear', (req, res) => {
     /* #swagger.summary = 'Очистка кэша';
        #swagger.description = 'Очищает имеющийся кэш.';
        #swagger.tags = ['Cache']
@@ -17,7 +17,7 @@ router.patch('/clear', (req, res) => {
     return cacheController.clearCache(req, res);
 });
     
-router.patch('/change-size', (req, res) => {
+router.put('/size', (req, res) => {
     /* #swagger.summary = 'Изменение размера кэша';
        #swagger.description = 'Изменяет размер кэша.';
        #swagger.tags = ['Cache']
@@ -37,7 +37,7 @@ router.patch('/change-size', (req, res) => {
 
     return cacheController.changeSize(req, res);
 });
-router.patch('/update', (req, res) => {
+router.put('/update', (req, res) => {
     /* #swagger.summary = 'Обновление кэша';
        #swagger.description = 'Обновляет кэш.';
        #swagger.tags = ['Cache']

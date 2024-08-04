@@ -5,14 +5,14 @@
     "version": "1.0.0",
     "description": "Описание REST API сервиса по управлению кэшем."
   },
-  "host": "localhost:3000",
+  "host": "localhost:3001",
   "basePath": "/",
   "schemes": [
     "http"
   ],
   "paths": {
     "/cache/clear": {
-      "patch": {
+      "delete": {
         "tags": [
           "Cache"
         ],
@@ -40,8 +40,8 @@
         }
       }
     },
-    "/cache/change-size": {
-      "patch": {
+    "/cache/size": {
+      "put": {
         "tags": [
           "Cache"
         ],
@@ -83,7 +83,7 @@
       }
     },
     "/cache/update": {
-      "patch": {
+      "put": {
         "tags": [
           "Cache"
         ],
