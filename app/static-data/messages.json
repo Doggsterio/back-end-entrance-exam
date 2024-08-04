@@ -1,0 +1,7 @@
+{
+    "cache": {
+        "sizeChanged": "Размер кэша изменён.",
+        "cacheCleared": "Кэш очищен.",
+        "cacheUpdated": "Кэш обновлён."
+    }
+}

@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js",
-    "swagger:gen": "node ./swagger/index.js"
+    "start": "node ./app/app.js",
+    "swagger:gen": "node ./app/swagger/index.js"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

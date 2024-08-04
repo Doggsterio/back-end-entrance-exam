@@ -22,7 +22,7 @@ router.put('/size', (req, res) => {
        #swagger.description = 'Изменяет размер кэша.';
        #swagger.tags = ['Cache']
        #swagger.parameters['newSize'] = {
-            in: "query",                            
+            in: "body",                            
             description: "Размер кэша (в количестве элементов)",                   
             required: "true",                     
             type: "integer",
@@ -37,6 +37,7 @@ router.put('/size', (req, res) => {
 
     return cacheController.changeSize(req, res);
 });
+
 router.put('/update', (req, res) => {
     /* #swagger.summary = 'Обновление кэша';
        #swagger.description = 'Обновляет кэш.';

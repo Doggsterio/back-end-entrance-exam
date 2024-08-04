@@ -3,7 +3,7 @@ const cacheService = require('../services/cache');
 
 function changeSize(req, res) {
     try {
-        res.json(cacheService.changeSize(Number(req.query.newSize)));
+        res.json(cacheService.changeSize(req.body.newSize));
     } catch (error) {
         res.status(500).send(`Error while changing cache size.`)
     }
