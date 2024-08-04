@@ -50,13 +50,17 @@
         "parameters": [
           {
             "name": "newSize",
-            "in": "query",
+            "in": "body",
             "description": "Размер кэша (в количестве элементов)",
             "required": true,
-            "type": "integer",
             "schema": {
-              "type": "string",
-              "example": "3"
+              "type": "object",
+              "properties": {
+                "newSize": {
+                  "type": "number",
+                  "example": 3
+                }
+              }
             }
           }
         ],

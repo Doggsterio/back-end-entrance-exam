@@ -25,8 +25,10 @@ router.put('/size', (req, res) => {
             in: "body",                            
             description: "Размер кэша (в количестве элементов)",                   
             required: "true",                     
-            type: "integer",
-            schema: "3"                                               
+            type: "object",
+            schema: {
+                newSize: 3
+            }                                               
        };
        #swagger.responses[200] = {
             description: 'Сообщение об успешном изменении размера кэша',
